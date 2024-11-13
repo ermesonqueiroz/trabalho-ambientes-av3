@@ -1,7 +1,8 @@
-async function buscarDados() {
-    const dados = "{ name: 'Luke', 'idade': 23 }";
-    const personagem = JSON.parse(dados);
-    console.log(personagem.name);
+async function obterInfoPersonagem() {
+    const infoGeralPersonagem = "{\"nome\": \"Luke\", \"idade\":23}";
+    const personagemInfo = JSON.parse(infoGeralPersonagem);
+    console.log(personagemInfo.nome);
+    console.log(personagemInfo.idade);
 }
 
-buscarDados();
+obterInfoPersonagem();

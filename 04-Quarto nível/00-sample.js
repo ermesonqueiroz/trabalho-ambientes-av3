@@ -1,32 +1,27 @@
 async function buscarPersonagem() {
     const mensagemDiv = document.getElementById("mensagem");
     mensagemDiv.innerHTML = "";
+    const idPersonagem = document.getElementById("idDoPersonagem").value;
 
-    const id = document.getElementById("personagemId").value;
-
-    if (!id || id <= 0) {
+    if (!idPersonagem || idPersonagem <= 0) {
         mostrarErro("ID inválido. Insira um número positivo.", "danger");
         return;
     }
-
     try {
-        const resposta = await fetch(`https://swapi.dev/api/people/${id}/`);
-
-        if (!resposta.ok) {
+        const respostaPersonagem = await fetch(`https://swapi.dev/api/people/${idPersonagem}/`);
+        if (!respostaPersonagem.ok) {
             throw new Error("Personagem não encontrado. Verifique o ID e tente novamente.");
         }
-
-        const personagem = await resposta.json();
-        mostrarResultado(personagem);
-
+        const dadosPersonagem = await respostaPersonagem.json();
+        mostrarResultado(dadosPersonagem);
     } catch (erro) {
         mostrarErro(erro.message, "danger");
     }
 }
 
-function mostrarErro(mensagem, tipo) {
+function mostrarErro(mensagemErro, tipoErro) {
     const mensagemDiv = document.getElementById("mensagem");
-    mensagemDiv.innerHTML = `<div class="alert alert-${tipo}" role="alert">${mensagem}</div>`;
+    mensagemDiv.innerHTML = `<div class="alert alert-${tipoErro}" role="alert">${mensagemErro}</div>`;
 }
 
 function mostrarResultado(personagem) {
@@ -38,3 +33,5 @@ function mostrarResultado(personagem) {
         <strong>Peso:</strong> ${personagem.mass} kg
       </div>`;
 }
+
+buscarPersonagem();
