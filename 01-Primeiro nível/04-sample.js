@@ -1,6 +1,6 @@
-let fcr = function(a, b) {
-    return a + b;
+let sum = function(numberA, numberB) {
+    return numberA + numberB;
 }
 
-let rsl = fcr(3, 5);
-console.log(rsl);
+let result = sum(3, 5);
+console.log(result);

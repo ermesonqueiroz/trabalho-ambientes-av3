@@ -1,28 +1,28 @@
-function calcularSalarioFuncionario(horasTrabalhadas, valorHora, cargo) {
-    const salarioBase = horasTrabalhadas * valorHora;
+function calculateEmployeeCompensation(workedHours, valuePerHour, role) {
+    const baseCompensation = workedHours * valuePerHour;
 
-    let salarioComBonus;
-    if (cargo === 'gerente') {
-        salarioComBonus = salarioBase + 1000;
-    } else if (cargo === 'supervisor') {
-        salarioComBonus = salarioBase + 500;
+    let compensationWithBonus;
+    if (role === 'gerente') {
+        compensationWithBonus = baseCompensation + 1000;
+    } else if (role === 'supervisor') {
+        compensationWithBonus = baseCompensation + 500;
     } else {
-        salarioComBonus = salarioBase + 200;
+        compensationWithBonus = baseCompensation + 200;
     }
 
-    const salarioComDesconto = salarioComBonus - 300;
+    const compensationWithDiscount = compensationWithBonus - 300;
 
-    let salarioFinal;
-    if (salarioComDesconto > 5000) {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * 0.27);
-    } else if (salarioComDesconto > 3000) {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * 0.18);
+    let finalCompensation;
+    if (compensationWithDiscount > 5000) {
+        finalCompensation = compensationWithDiscount - (compensationWithDiscount * 0.27);
+    } else if (compensationWithDiscount > 3000) {
+        finalCompensation = compensationWithDiscount - (compensationWithDiscount * 0.18);
     } else {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * 0.11);
+        finalCompensation = compensationWithDiscount - (compensationWithDiscount * 0.11);
     }
 
-    return salarioFinal;
+    return finalCompensation;
 }
 
-const salario = calcularSalarioFuncionario(160, 25, 'gerente');
-console.log(`O salário final é: ${salario}`);
+const compensation = calculateEmployeeCompensation(160, 25, 'gerente');
+console.log(`O salário final é: ${compensation}`);

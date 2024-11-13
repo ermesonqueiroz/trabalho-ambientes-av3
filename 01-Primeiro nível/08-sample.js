@@ -1,7 +1,7 @@
-let p = { n: "Maria", i: 28 };
+let person = { name: "Maria", age: 28 };
 
-function maior(pessoa) {
-    return pessoa.i >= 18;
+function personIsOfLegalAge(person) {
+    return person.age >= 18;
 }
 
-console.log(maior(p));
+console.log(personIsOfLegalAge(person));

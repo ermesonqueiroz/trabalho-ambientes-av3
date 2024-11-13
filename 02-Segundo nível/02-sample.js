@@ -1,9 +1,2 @@
-function verificarSePodeDirigir(idade) {
-    if (idade >= 18) {
-        return 'Pode dirigir';
-    } else {
-        return 'Não pode dirigir';
-    }
-}
-
-console.log(verificarSePodeDirigir(16));
+const canDrive = (age) => age >= 18 ? 'Pode dirigir' : 'Não pode dirigir';
+console.log(canDrive(16));

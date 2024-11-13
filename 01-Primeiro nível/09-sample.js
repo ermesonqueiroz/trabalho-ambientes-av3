@@ -1,8 +1,8 @@
-class Gestor {
-    constructor(n, i) {
-        this.nome = n;
-        this.idade = i;
+class Manager {
+    constructor(name, age) {
+        this.nome = name;
+        this.idade = age;
     }
 }
 
-let p = new Gestor("Lucas", 40);
+let person = new Manager("Lucas", 40);

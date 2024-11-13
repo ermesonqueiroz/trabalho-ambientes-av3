@@ -1,13 +1,13 @@
-function h(a) {
-    let b = [];
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] % 2 === 0) {
-            b.push(a[i]);
+function filterOddNumbers(numbers) {
+    let result = [];
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % 2 === 0) {
+            result.push(numbers[i]);
         }
     }
-    return b;
+    return result;
 }
 
-let x = [1, 2, 3, 4, 5, 6];
-let y = h(x);
-console.log(y);
+let numbers = [1, 2, 3, 4, 5, 6];
+let oddNumbers = filterOddNumbers(numbers);
+console.log(oddNumbers);
