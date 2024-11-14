@@ -1,8 +1,15 @@
-async function buscarEspecie() {
-    const resposta = await fetch("https://swapi.dev/api/species/1/");
-    const especie = await resposta.json();
-
-    console.log(especie.average_lifespan.toUpperCase());
+async function obterDadosEspecie(idDaEspecie) {
+    try {
+        const respostaApiEspecie = await fetch(`https://swapi.dev/api/species/${idDaEspecie}/`);
+        if (!respostaApiEspecie.ok) {
+            throw new Error(`Erro na requisição ${respostaApiEspecie.status}`);
+        }
+        const especieDados = await respostaApiEspecie.json();
+        console.log(especieDados); 
+    } catch (erro) {
+        console.error(`Erro ao obter a espécie: ${idDaEspecie}`, erro);
+    }
 }
 
-buscarEspecie();
+const idEspecieConsulta = 1;
+obterDadosEspecie(idEspecieConsulta);

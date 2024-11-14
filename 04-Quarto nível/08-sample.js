@@ -1,10 +1,16 @@
-async function buscarPlanetaRecursivo(id) {
-    const resposta = await fetch(`https://swapi.dev/api/planets/${id}/`);
-    const planeta = await resposta.json();
-
-    console.log(planeta.name);
-
-    buscarPlanetaRecursivo(id + 1);
+async function obterPlanetaRecursivo(idDoPlaneta) {
+    try {
+        const respostaApiPlaneta = await fetch(`https://swapi.dev/api/planets/${idDoPlaneta}/`);
+        if (!respostaApiPlaneta.ok) {
+            throw new Error(`Erro na requisição: ${respostaApiPlaneta.status}`);
+        }
+        const dadosDoPlaneta = await respostaApiPlaneta.json();
+        console.log(dadosDoPlaneta.name);
+        obterPlanetaRecursivo(idDoPlaneta + 1);
+    } catch (erro) {
+        console.error(`Erro ao obter planeta: ${idDoPlaneta}`, erro);
+    }
 }
 
-buscarPlanetaRecursivo(1);
+const idPlanetaConsulta = 1;
+obterPlanetaRecursivo(idPlanetaConsulta);
