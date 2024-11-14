@@ -23,32 +23,39 @@ function principal() {
 }
 
 function obterUsuario(id) {
-    if (id === 42) {
-        return {
+    const usuarios = [
+        {
             id: 42,
             nome: "João Silva",
             idade: 25,
             ativo: 1
-        };
-    } else if (id === 43) {
-        return {
+        },
+        {
             id: 43,
             nome: "Maria Souza",
             idade: 28,
             ativo: 0
-        };
-    } else {
+        }
+    ];
+
+    const usuario = usuarios.find((dados) => id === dados.id);
+
+    if (!usuario) {
         console.log("Usuário não encontrado");
         return null;
     }
+
+    return usuario;
+}
+
+function salvarDados() {
+    console.log("Dados salvos com sucesso!");
 }
 
 function atualizarDados(usuario) {
     if (usuario !== null && usuario.idade > 18) {
         console.log("Atualizando usuário:", usuario.id);
-        function salvarDados() {
-            console.log("Dados salvos com sucesso!");
-        }
+
         salvarDados();
 
         usuario.idade += 1;
@@ -58,6 +65,7 @@ function atualizarDados(usuario) {
 
 function calcular(a, b, c) {
     let d = 0;
+
     if (a === 1) {
         d = b + c;
     } else if (a === 2) {
@@ -68,9 +76,11 @@ function calcular(a, b, c) {
         d = b / c;
     }
 
-    let e = d.toString().split('').reverse().join('');
-    console.log("String invertida:", e);
-    return e;
+    return d;
+}
+
+function inverterString(entrada) {
+    return entrada.toString().split('').reverse().join('');
 }
 
 function processarDados(n) {
@@ -84,37 +94,37 @@ function processarDados(n) {
     }
     console.log("Resultado do processamento:", resultado);
 
-    function exibirDados() {
-        let dados = ["Valor 1", "Valor 2", "Valor 3"];
-        for (let i = 0; i < dados.length; i++) {
-            console.log("Dados:", dados[i]);
-        }
-    }
-    exibirDados();
-
     return resultado;
 }
 
-function funcao() {
+function exibirDados() {
+    let dados = ["Valor 1", "Valor 2", "Valor 3"];
+    for (let i = 0; i < dados.length; i++) {
+        console.log("Dados:", dados[i]);
+    }
+}
+
+function calcularDados() {
     let itens = [5, 7, 9, 11];
     let x = 0;
     for (let i = 0; i < itens.length; i++) {
         x += itens[i] * 3;
     }
-
-    function mostrarInfo() {
-        let valores = ["Dado 1", "Dado 2", "Dado 3"];
-        for (let j = 0; j < valores.length; j++) {
-            console.log("Info:", valores[j]);
-        }
-    }
-
-    mostrarInfo();
+    
     console.log("Cálculo total:", x);
     return x;
 }
 
+function mostrarInfo() {
+    let valores = ["Dado 1", "Dado 2", "Dado 3"];
+    for (let j = 0; j < valores.length; j++) {
+        console.log("Info:", valores[j]);
+    }
+}
+
 principal();
-console.log("Resultado do cálculo:", calcular(1, 2, 3));
+console.log("Resultado do cálculo:", inverterString(calcular(1, 2, 3)));
+exibirDados();
 console.log("Resultado do processamento de dados:", processarDados(10));
-console.log("Resultado da função:", funcao());
+mostrarInfo();
+console.log("Resultado da função:", calcularDados());
